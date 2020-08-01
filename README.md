@@ -1,6 +1,6 @@
 # bookmark-go
 
-### show index
+### show list
 ```
 $ go run cmd/index/main.go
 ```
