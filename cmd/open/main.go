@@ -9,6 +9,7 @@ import (
 	"os"
 	"os/exec"
 	"strings"
+	"time"
 )
 
 func main() {
@@ -30,8 +31,14 @@ func main() {
 		log.Fatal(err)
 	}
 
-	fmt.Println(u.Url())
-	exec.Command("open", u.Url()).Run()
+	fmt.Println(u.Url)
+	exec.Command("open", u.Url).Run()
+
+	u.LastVisitAt = time.Now()
+	err = db.Save(&u).Error
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func getInput() string {

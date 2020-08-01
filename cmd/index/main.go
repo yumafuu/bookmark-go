@@ -11,9 +11,9 @@ func main() {
 	defer db.Close()
 
 	var urls []models.URL
-	db.Find(&urls)
+	db.Order("last_visit_at desc").Find(&urls)
 
 	for _, u := range urls {
-		fmt.Println(u.ID, u.KeyWord(), u.Url(), u.Title())
+		fmt.Println(u.ID, u.KeyWord, u.Url, u.Title)
 	}
 }

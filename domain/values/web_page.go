@@ -1,7 +1,6 @@
 package values
 
 import (
-	"fmt"
 	"io/ioutil"
 	"net/http"
 	"regexp"
@@ -39,10 +38,8 @@ func getTitle(url string) (string, error) {
 	reg := regexp.MustCompile(`<title>(.+)</title>`)
 
 	t := reg.FindString(s)
-	fmt.Println(t)
 	t = strings.Replace(t, "</title>", "", 1)
 	t = strings.Replace(t, "<title>", "", 1)
-	fmt.Println(t)
 
 	return t, nil
 }

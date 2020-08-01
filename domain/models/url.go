@@ -9,10 +9,10 @@ import (
 
 type URL struct {
 	gorm.Model
-	keyWord     string `gorm:"unique_index;not null;"`
-	title       string `gorm:"not null"`
-	url         string `gorm:"not null"`
-	lastVisitAt time.Time
+	KeyWord     string `gorm:"unique_index;not null;"`
+	Title       string `gorm:"not null"`
+	Url         string `gorm:"not null"`
+	LastVisitAt time.Time
 }
 
 func NewURL(keyWord, url string) (URL, error) {
@@ -22,22 +22,10 @@ func NewURL(keyWord, url string) (URL, error) {
 	}
 
 	l := URL{
-		keyWord: keyWord,
-		title:   page.Title,
-		url:     page.Url,
+		KeyWord: keyWord,
+		Title:   page.Title,
+		Url:     page.Url,
 	}
 
 	return l, nil
-}
-
-func (u URL) Url() string {
-	return u.url
-}
-
-func (u URL) KeyWord() string {
-	return u.keyWord
-}
-
-func (u URL) Title() string {
-	return u.title
 }
