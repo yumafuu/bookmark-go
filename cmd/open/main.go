@@ -1,12 +1,11 @@
 package main
 
 import (
+	"bookmarks/cli"
 	"bookmarks/db"
 	"bookmarks/domain/models"
-	"bufio"
 	"fmt"
 	"log"
-	"os"
 	"os/exec"
 	"strings"
 	"time"
@@ -17,16 +16,16 @@ func main() {
 	defer db.Close()
 
 	var u models.URL
+	var s string
 
-	fmt.Print("id > ")
-	i := getInput()
-	inputs := strings.Fields(i)
+	cli.WaitingInput("id", &s)
+	items := strings.Fields(s)
 
-	if len(inputs) == 0 {
+	if len(items) == 0 {
 		return
 	}
-	id := inputs[0]
-	err := db.Where("id = ?", id).First(&u).Error
+
+	err := db.Where("id = ?", items[0]).First(&u).Error
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -39,10 +38,4 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-}
-
-func getInput() string {
-	stdin := bufio.NewScanner(os.Stdin)
-	stdin.Scan()
-	return stdin.Text()
 }

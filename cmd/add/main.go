@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bookmarks/cli"
 	"bookmarks/db"
 	"bookmarks/domain/models"
 	"fmt"
@@ -14,10 +15,8 @@ func main() {
 	var url string
 
 	fmt.Println("ADD LINK")
-	fmt.Print("keyWord > ")
-	fmt.Scan(&keyWord)
-	fmt.Print("url > ")
-	fmt.Scan(&url)
+	cli.WaitingInput("keyWord", &keyWord)
+	cli.WaitingInput("URL", &url)
 
 	l, err := models.NewURL(
 		keyWord, url,

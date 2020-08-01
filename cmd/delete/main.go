@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bookmarks/cli"
 	"bookmarks/db"
 	"bookmarks/domain/models"
 	"fmt"
@@ -14,14 +15,14 @@ func main() {
 	var id string
 
 	fmt.Println("DELETE LINK")
-	fmt.Print("id > ")
-	fmt.Scan(&id)
-	err := db.Where("id = ?", id).First(&l).Error
+	cli.WaitingInput("id", &id)
 
+	err := db.Where("id = ?", id).First(&l).Error
 	if err != nil {
 		log.Fatal(err)
 		return
 	}
+
 	err = db.Delete(&l).Error
 	if err != nil {
 		log.Fatal(err)
