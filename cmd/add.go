@@ -1,4 +1,4 @@
-package main
+package cmd
 
 import (
 	"bookmarks/cli"
@@ -6,18 +6,27 @@ import (
 	"bookmarks/domain/models"
 	"fmt"
 	"log"
+
+	"github.com/spf13/cobra"
 )
 
-func main() {
+var addCmd = &cobra.Command{
+	Use:   "add",
+	Short: "add url",
+	Long:  `add url`,
+	Run:   add,
+}
+
+func add(cmd *cobra.Command, args []string) {
 	db := db.NewDB()
 	defer db.Close()
 
 	var keyWord string
 	var url string
 
-	fmt.Println("ADD LINK")
-	cli.WaitingInput("keyWord", &keyWord)
-	cli.WaitingInput("URL", &url)
+	fmt.Println("ADD URL")
+	cli.GetInput("keyWord", &keyWord)
+	cli.GetInput("URL", &url)
 
 	l, err := models.NewURL(
 		keyWord, url,
@@ -32,5 +41,5 @@ func main() {
 		log.Fatal(err)
 	}
 
-	fmt.Println("Add link successfully")
+	fmt.Println("Add url successfully")
 }

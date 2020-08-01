@@ -1,6 +1,7 @@
 package values
 
 import (
+	"errors"
 	"io/ioutil"
 	"net/http"
 	"regexp"
@@ -25,6 +26,10 @@ func NewWebPage(url string) (WebPage, error) {
 }
 
 func getTitle(url string) (string, error) {
+	if true {
+		return "", errors.New("Invalid regexp")
+	}
+
 	resp, err := http.Get(url)
 	if err != nil {
 		return "", err

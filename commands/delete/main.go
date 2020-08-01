@@ -14,8 +14,8 @@ func main() {
 	var l models.URL
 	var id string
 
-	fmt.Println("DELETE LINK")
-	cli.WaitingInput("id", &id)
+	fmt.Println("DELETE URL")
+	cli.GetInput("id", &id)
 
 	err := db.Where("id = ?", id).First(&l).Error
 	if err != nil {
