@@ -19,9 +19,12 @@ func main() {
 
 	// fmt.Prinlt("id > ")
 	i := getInput()
-	items := strings.Fields(i)
+	inputs := strings.Fields(i)
 
-	err := db.Where("id = ?", items[0]).First(&u).Error
+	if len(inputs) == 0 {
+		return
+	}
+	err := db.Where("id = ?", inputs[0]).First(&u).Error
 	if err != nil {
 		log.Fatal(err)
 	}
