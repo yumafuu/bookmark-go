@@ -30,7 +30,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	fmt.Println(u.Url)
+	fmt.Printf("open %v\n", u.Url)
 	exec.Command("open", u.Url).Run()
 
 	u.LastVisitAt = time.Now()

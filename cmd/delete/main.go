@@ -20,13 +20,11 @@ func main() {
 	err := db.Where("id = ?", id).First(&l).Error
 	if err != nil {
 		log.Fatal(err)
-		return
 	}
 
 	err = db.Delete(&l).Error
 	if err != nil {
 		log.Fatal(err)
-		return
 	}
 
 	fmt.Println("done")

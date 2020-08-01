@@ -5,6 +5,7 @@ import (
 	"bookmarks/db"
 	"bookmarks/domain/models"
 	"fmt"
+	"log"
 )
 
 func main() {
@@ -23,14 +24,12 @@ func main() {
 	)
 
 	if err != nil {
-		fmt.Printf("FAIL: %v\n", err)
-		return
+		log.Fatal(err)
 	}
 
 	err = db.Create(&l).Error
 	if err != nil {
-		fmt.Printf("FAIL: %v\n", err)
-		return
+		log.Fatal(err)
 	}
 
 	fmt.Println("Add link successfully")
