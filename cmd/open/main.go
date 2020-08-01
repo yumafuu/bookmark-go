@@ -24,7 +24,8 @@ func main() {
 	if len(inputs) == 0 {
 		return
 	}
-	err := db.Where("id = ?", inputs[0]).First(&u).Error
+	id := inputs[0]
+	err := db.Where("id = ?", id).First(&u).Error
 	if err != nil {
 		log.Fatal(err)
 	}
