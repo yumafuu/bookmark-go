@@ -27,7 +27,7 @@ func open(cmd *cobra.Command, args []string) {
 	var u models.URL
 	var s string
 
-	cli.WaitingInput("id", &s)
+	cli.GetInput("id", &s)
 	items := strings.Fields(s)
 
 	if len(items) == 0 {
