@@ -2,7 +2,7 @@ package main
 
 import (
 	"bookmarks/db"
-	"bookmarks/models"
+	"bookmarks/domain/models"
 	"bufio"
 	"fmt"
 	"log"
@@ -17,7 +17,7 @@ func main() {
 
 	var u models.URL
 
-	// fmt.Prinlt("id > ")
+	fmt.Print("id > ")
 	i := getInput()
 	inputs := strings.Fields(i)
 
@@ -30,8 +30,8 @@ func main() {
 		log.Fatal(err)
 	}
 
-	fmt.Println(u.Url)
-	exec.Command("open", u.Url).Run()
+	fmt.Println(u.Url())
+	exec.Command("open", u.Url()).Run()
 }
 
 func getInput() string {

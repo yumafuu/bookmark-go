@@ -2,7 +2,7 @@ package main
 
 import (
 	"bookmarks/db"
-	"bookmarks/models"
+	"bookmarks/domain/models"
 	"fmt"
 	"log"
 )

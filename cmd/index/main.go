@@ -2,7 +2,7 @@ package main
 
 import (
 	"bookmarks/db"
-	"bookmarks/models"
+	"bookmarks/domain/models"
 	"fmt"
 )
 
@@ -14,6 +14,6 @@ func main() {
 	db.Find(&urls)
 
 	for _, u := range urls {
-		fmt.Println(u.ID, u.KeyWord, u.Url, u.Title)
+		fmt.Println(u.ID, u.KeyWord(), u.Url(), u.Title())
 	}
 }
