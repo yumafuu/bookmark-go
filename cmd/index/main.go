@@ -13,7 +13,6 @@ func main() {
 	var urls []models.URL
 	db.Find(&urls)
 
-	fmt.Println("ID KeyWord URL TITLE")
 	for _, u := range urls {
 		fmt.Println(u.ID, u.KeyWord, u.Url, u.Title)
 	}
