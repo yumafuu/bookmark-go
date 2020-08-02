@@ -2,6 +2,7 @@ package values
 
 import (
 	"errors"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 	"regexp"
@@ -26,8 +27,10 @@ func NewWebPage(url string) (WebPage, error) {
 }
 
 func getTitle(url string) (string, error) {
-	if true {
-		return "", errors.New("Invalid regexp")
+	r := regexp.MustCompile(`http(s)?://([\w-]+\.)+[\w-]+(/[\w- ./?%&=~]*)?`)
+
+	if !r.MatchString(url) {
+		return "", errors.New(fmt.Sprintf("Invalid URL regexp: %v", url))
 	}
 
 	resp, err := http.Get(url)
