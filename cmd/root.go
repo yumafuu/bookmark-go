@@ -7,11 +7,23 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var rootCmd = &cobra.Command{
-	Use:   "bookmark-go",
-	Short: "bookmark-go is a bookmark tool on cli",
-	Long:  `bookmark-go is a bookmark tool on cli`,
-	Run:   indexCmd.Run,
+var (
+	keyWord string
+	url     string
+	id      string
+	rootCmd = &cobra.Command{
+		Use:   "bookmark-go",
+		Short: "bookmark-go is a bookmark tool on cli",
+		Long:  `bookmark-go is a bookmark tool on cli`,
+		Run:   indexCmd.Run,
+	}
+)
+
+func init() {
+	addCmd.PersistentFlags().StringVarP(&keyWord, "keyWord", "k", "", "add keyWord")
+	addCmd.PersistentFlags().StringVarP(&url, "url", "u", "", "open this link")
+	openCmd.PersistentFlags().StringVarP(&id, "id", "i", "", "specify id")
+	deleteCmd.PersistentFlags().StringVarP(&id, "id", "i", "", "specify id")
 }
 
 func Execute() {

@@ -26,13 +26,15 @@ func delete(cmd *cobra.Command, args []string) {
 	var s string
 
 	fmt.Println("DELETE URL")
-	cli.GetInput("id", &s)
-	items := strings.Fields(s)
-	if len(items) == 0 {
-		return
+	if id == "" {
+		cli.GetInput("id", &s)
+		items := strings.Fields(s)
+		if len(items) == 0 {
+			return
+		}
+		id = items[0]
 	}
 
-	id := items[0]
 	err := db.Where("id = ?", id).First(&u).Error
 	if err != nil {
 		log.Fatal(err)
