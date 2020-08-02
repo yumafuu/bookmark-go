@@ -21,18 +21,18 @@ func delete(cmd *cobra.Command, args []string) {
 	db := db.NewDB()
 	defer db.Close()
 
-	var l models.URL
+	var u models.URL
 	var id string
 
 	fmt.Println("DELETE URL")
 	cli.GetInput("id", &id)
 
-	err := db.Where("id = ?", id).First(&l).Error
+	err := db.Where("id = ?", id).First(&u).Error
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	err = db.Delete(&l).Error
+	err = db.Delete(&u).Error
 	if err != nil {
 		log.Fatal(err)
 	}

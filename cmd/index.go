@@ -25,5 +25,4 @@ func index(cmd *cobra.Command, args []string) {
 	for _, u := range urls {
 		fmt.Println(u.ID, u.KeyWord, u.Url, u.Title)
 	}
-
 }
