@@ -9,7 +9,7 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
-const DefaultDbPath = "./db.sql"
+const DefaultDbPath = "./bookmark.db"
 
 func NewDB() *gorm.DB {
 	path := os.Getenv("BOOKMARK_GO_DB_PATH")

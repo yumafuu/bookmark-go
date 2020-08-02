@@ -2,20 +2,20 @@
 
 ### show url list
 ```
-$ go run cmd/index/main.go
+$ go run main.go show
 ```
 
 ### open url
 ```
-$ go run cmd/open/main.go
+$ go run main.go open
 ```
 
 ### add url
 ```
-$ go run cmd/add/main.go
+$ go run main.go add
 ```
 
 ### delete url
 ```
-$ go run cmd/delete/main.go
+$ go run main.go delete
 ```

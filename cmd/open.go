@@ -1,4 +1,4 @@
-package main
+package cmd
 
 import (
 	"bookmarks/cli"
@@ -9,16 +9,25 @@ import (
 	"os/exec"
 	"strings"
 	"time"
+
+	"github.com/spf13/cobra"
 )
 
-func main() {
+var openCmd = &cobra.Command{
+	Use:   "open",
+	Short: "open url",
+	Long:  `open url`,
+	Run:   open,
+}
+
+func open(cmd *cobra.Command, args []string) {
 	db := db.NewDB()
 	defer db.Close()
 
 	var u models.URL
 	var s string
 
-	cli.WaitingInput("id", &s)
+	cli.GetInput("id", &s)
 	items := strings.Fields(s)
 
 	if len(items) == 0 {
