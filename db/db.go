@@ -2,6 +2,7 @@ package db
 
 import (
 	"bookmarks/domain/models"
+	"fmt"
 	"log"
 	"os"
 
@@ -9,13 +10,23 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
-const DefaultDbPath = "./bookmark.db"
+const DefaultDbFile = "/.bookmark.db"
 
 func NewDB() *gorm.DB {
-	path := os.Getenv("BOOKMARK_GO_DB_PATH")
-	if path == "" {
-		path = DefaultDbPath
+	path, err := dbPath()
+	if err != nil {
+		log.Fatal(err)
 	}
+
+	_, err = os.Stat(path)
+	if err != nil {
+		_, err = os.Create(path)
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
+
+	fmt.Println(path)
 
 	db, err := gorm.Open("sqlite3", path)
 	if err != nil {
@@ -24,4 +35,20 @@ func NewDB() *gorm.DB {
 
 	db.AutoMigrate(&models.URL{})
 	return db
+}
+
+func dbPath() (string, error) {
+	path := os.Getenv("BOOKMARK_GO_DB_PATH")
+	if path != "" {
+		return path, nil
+	}
+
+	home, err := os.UserHomeDir()
+	if err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		return "", err
+	}
+	path = home + DefaultDbFile
+
+	return path, nil
 }

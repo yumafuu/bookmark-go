@@ -15,6 +15,11 @@ type WebPage struct {
 }
 
 func NewWebPage(url string) (WebPage, error) {
+	err := validUrl(url)
+	if err != nil {
+		return WebPage{}, err
+	}
+
 	title, err := getTitle(url)
 	if err != nil {
 		return WebPage{}, err
@@ -26,13 +31,17 @@ func NewWebPage(url string) (WebPage, error) {
 	}, nil
 }
 
-func getTitle(url string) (string, error) {
+func validUrl(url string) error {
 	r := regexp.MustCompile(`http(s)?://([\w-]+\.)+[\w-]+(/[\w- ./?%&=~]*)?`)
 
 	if !r.MatchString(url) {
-		return "", errors.New(fmt.Sprintf("Invalid URL regexp: %v", url))
+		return errors.New(fmt.Sprintf("Invalid URL regexp: %v", url))
 	}
 
+	return nil
+}
+
+func getTitle(url string) (string, error) {
 	resp, err := http.Get(url)
 	if err != nil {
 		return "", err

@@ -16,15 +16,15 @@ type URL struct {
 }
 
 func NewURL(keyWord, url string) (URL, error) {
-	page, err := values.NewWebPage(url)
+	p, err := values.NewWebPage(url)
 	if err != nil {
 		return URL{}, err
 	}
 
 	l := URL{
 		KeyWord: keyWord,
-		Title:   page.Title,
-		Url:     page.Url,
+		Title:   p.Title,
+		Url:     p.Url,
 	}
 
 	return l, nil
