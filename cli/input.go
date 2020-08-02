@@ -6,10 +6,10 @@ import (
 	"os"
 )
 
-func GetInput(indicateText string, v *string) {
+func GetInput(indicateText string, s *string) {
 	fmt.Printf("%v > ", indicateText)
 	stdin := bufio.NewScanner(os.Stdin)
 	stdin.Scan()
 
-	*v = stdin.Text()
+	*s = stdin.Text()
 }
