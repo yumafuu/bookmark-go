@@ -2,7 +2,6 @@ package db
 
 import (
 	"bookmarks/domain/models"
-	"fmt"
 	"log"
 	"os"
 
@@ -26,8 +25,6 @@ func NewDB() *gorm.DB {
 		}
 	}
 
-	fmt.Println(path)
-
 	db, err := gorm.Open("sqlite3", path)
 	if err != nil {
 		log.Fatal(err)
@@ -45,7 +42,6 @@ func dbPath() (string, error) {
 
 	home, err := os.UserHomeDir()
 	if err != nil {
-		fmt.Fprintln(os.Stderr, err)
 		return "", err
 	}
 	path = home + DefaultDbFile

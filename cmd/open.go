@@ -34,7 +34,8 @@ func open(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	err := db.Where("id = ?", items[0]).First(&u).Error
+	id := items[0]
+	err := db.Where("id = ?", id).First(&u).Error
 	if err != nil {
 		log.Fatal(err)
 	}
