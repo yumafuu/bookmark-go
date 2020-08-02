@@ -1,9 +1,11 @@
 package cmd
 
 import (
+	"bookmarks/cli"
 	"bookmarks/db"
 	"bookmarks/domain/models"
 	"fmt"
+	"log"
 
 	"github.com/spf13/cobra"
 )
@@ -19,11 +21,21 @@ func delete(cmd *cobra.Command, args []string) {
 	db := db.NewDB()
 	defer db.Close()
 
-	var urls []models.URL
-	db.Order("last_visit_at desc").Find(&urls)
+	var l models.URL
+	var id string
 
-	for _, u := range urls {
-		fmt.Println(u.ID, u.KeyWord, u.Url, u.Title)
+	fmt.Println("DELETE URL")
+	cli.GetInput("id", &id)
+
+	err := db.Where("id = ?", id).First(&l).Error
+	if err != nil {
+		log.Fatal(err)
 	}
 
+	err = db.Delete(&l).Error
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println("done")
 }
