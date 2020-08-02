@@ -18,7 +18,7 @@ func main() {
 	var u models.URL
 	var s string
 
-	cli.WaitingInput("id", &s)
+	cli.GetInput("id", &s)
 	items := strings.Fields(s)
 
 	if len(items) == 0 {
