@@ -1,4 +1,5 @@
 # bookmark-go
+bookmark-go is a bookmark tool on cli.
 
 ## install
 ```
