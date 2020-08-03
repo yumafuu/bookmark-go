@@ -1,4 +1,4 @@
-module bookmarks
+module bookmark-go
 
 go 1.14
 

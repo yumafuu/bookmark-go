@@ -1,6 +1,6 @@
 package main
 
-import "bookmarks/cmd"
+import "bookmark-go/cmd"
 
 func main() {
 	cmd.Execute()

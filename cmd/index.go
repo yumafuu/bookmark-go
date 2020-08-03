@@ -1,8 +1,8 @@
 package cmd
 
 import (
-	"bookmarks/db"
-	"bookmarks/domain/models"
+	"bookmark-go/db"
+	"bookmark-go/domain/models"
 	"fmt"
 
 	"github.com/spf13/cobra"

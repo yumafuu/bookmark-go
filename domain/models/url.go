@@ -1,7 +1,7 @@
 package models
 
 import (
-	"bookmarks/domain/values"
+	"bookmark-go/domain/values"
 	"time"
 
 	"github.com/jinzhu/gorm"

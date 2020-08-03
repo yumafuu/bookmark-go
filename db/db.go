@@ -1,7 +1,7 @@
 package db
 
 import (
-	"bookmarks/domain/models"
+	"bookmark-go/domain/models"
 	"log"
 	"os"
 

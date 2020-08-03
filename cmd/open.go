@@ -1,9 +1,9 @@
 package cmd
 
 import (
-	"bookmarks/cli"
-	"bookmarks/db"
-	"bookmarks/domain/models"
+	"bookmark-go/cli"
+	"bookmark-go/db"
+	"bookmark-go/domain/models"
 	"fmt"
 	"log"
 	"os/exec"
