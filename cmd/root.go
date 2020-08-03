@@ -19,7 +19,7 @@ var (
 )
 
 func init() {
-	addCmd.PersistentFlags().StringVarP(&keyWord, "keyWord", "k", "", "add keyWord")
+	addCmd.PersistentFlags().StringVarP(&keyWord, "keyword", "k", "", "add keyWord")
 	addCmd.PersistentFlags().StringVarP(&url, "url", "u", "", "open this link")
 	openCmd.PersistentFlags().StringVarP(&id, "id", "i", "", "specify id")
 	deleteCmd.PersistentFlags().StringVarP(&id, "id", "i", "", "specify id")
