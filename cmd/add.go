@@ -21,12 +21,14 @@ func add(cmd *cobra.Command, args []string) {
 	db := db.NewDB()
 	defer db.Close()
 
-	var keyWord string
-	var url string
-
 	fmt.Println("ADD URL")
-	cli.GetInput("keyWord", &keyWord)
-	cli.GetInput("URL", &url)
+	if keyWord == "" {
+		cli.GetInput("keyWord", &keyWord)
+	}
+
+	if url == "" {
+		cli.GetInput("URL", &url)
+	}
 
 	l, err := models.NewURL(
 		keyWord, url,
