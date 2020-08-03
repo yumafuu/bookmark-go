@@ -15,7 +15,6 @@ var (
 		Use:   "bookmark-go",
 		Short: "bookmark-go is a bookmark tool on cli",
 		Long:  `bookmark-go is a bookmark tool on cli`,
-		Run:   indexCmd.Run,
 	}
 )
 
