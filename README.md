@@ -15,6 +15,7 @@ $ bookmark-go show
 ```
 $ bookmark-go open --id 1
 ```
+or
 ```
 $ bookmark-go open
 id > {input}
@@ -24,6 +25,7 @@ id > {input}
 ```
 $ bookmark-go add --url https://github.com/YumaFuu/bookmark-go --keyword bookmark-go
 ```
+or
 ```
 $ bookmark-go add
 url > {input}
@@ -34,6 +36,7 @@ keyword > {input}
 ```
 $ bookmark-go delete --id 1
 ```
+or
 ```
 $ bookmark-go delete
 id > {input}
