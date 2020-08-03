@@ -43,7 +43,7 @@ $ bookmark-go delete
 id > {input}
 ```
 
-## Advance Usage
+## Advanced Usage
 ```
 $ bookmark-go show | fzf | bookmark-go open
 $ bookmark-go show | peco | bookmark-go open
