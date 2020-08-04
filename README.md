@@ -7,7 +7,7 @@ $ go get bookmark-go
 ```
 
 This tool uses sqlite3. The default file path is `~/.bookmark.db`.
-if you want to change file path, set env variable `BOOKMARK_GO_DB_PATH`
+If you want to change file path, set env variable `BOOKMARK_GO_DB_PATH` to where you want to put file
 
 ## Basic Usage
 ### show url list
