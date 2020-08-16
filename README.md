@@ -6,8 +6,8 @@ bookmark-go is a bookmark tool on cli.
 $ go get bookmark-go
 ```
 
-This tool uses sqlite3. The default file path is `~/.bookmark.db`.
-If you want to change file path, set env variable `BOOKMARK_GO_DB_PATH` to where you want to put file
+This tool uses sqlite3. The default file path is `~/.bookmark.db`. <br>
+If you want to change file path, set env variable `BOOKMARK_GO_DB_PATH` to where you want to put the file.
 
 ## Basic Usage
 ### show url list
